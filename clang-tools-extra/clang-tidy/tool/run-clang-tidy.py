@@ -122,6 +122,9 @@ def get_tidy_invocation(f, clang_tidy_binary, checks, tmpdir, build_path,
     start.append(name)
   for arg in extra_arg:
       start.append('-extra-arg=%s' % arg)
+  start.append('-extra-arg=-Wno-class-memaccess')
+  start.append('-extra-arg=-Wno-maybe-uninitialized')
+  start.append('-extra-arg=-Wsuggest-override')
   for arg in extra_arg_before:
       start.append('-extra-arg-before=%s' % arg)
   start.append('-p=' + build_path)
