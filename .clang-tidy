@@ -20,8 +20,6 @@ CheckOptions:
     value:           CamelCase
   - key:             readability-identifier-naming.TemplateVariableCase
     value:           CamelCase
-  - key:             readability-identifier-naming.VariablePrefix
-    value:           pref_1_
   - key:             readability-identifier-naming.IgnoreMainLikeFunctions
     value:           1
   - key:             readability-redundant-member-init.IgnoreBaseInCopyConstructors
