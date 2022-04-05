@@ -3,6 +3,8 @@ import os
 import yaml
 import sys
 
+# NOTE: Clang-tidy-15 required
+
 def do_check():
     debug = True # debug purposes
     current_dir = os.getcwd()
