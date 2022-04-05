@@ -1,12 +1,10 @@
 import argparse
 import os
 import yaml
-import sys
 
 # NOTE: Clang-tidy-15 required
 
 def do_check(args):
-    debug = True # debug purposes
     current_dir = os.getcwd()
     llvm_dir = current_dir # When script would be implemented - llvm_dir and current_dir would be different
     sycl_dir = llvm_dir + os.sep + 'sycl' + os.sep
@@ -26,12 +24,12 @@ def do_check(args):
     #print(files_in_src_folder)
     if args.fix:
         for file_to_check in files_in_src_folder:
-            os.system(f'clang-tidy -fix -config="{tidy_options}" -p {llvm_dir}/build {file_to_check}')
-            if debug: break
+            os.system(f'clang-tidy -fix-errors -config="{tidy_options}" -p {llvm_dir}/build {file_to_check}')
     else:
         for file_to_check in files_in_src_folder:
             os.system(f'clang-tidy -config="{tidy_options}" -p {llvm_dir}/build {file_to_check}')
-            if debug: break
+
+
 def main() :
     parser = argparse.ArgumentParser(prog='clang-tidy-checker.py',
                                     description='script to do clang-tidy for llvm/sycl',
@@ -41,6 +39,7 @@ def main() :
     args = parser.parse_args()
     print(f"args: {args}")
     do_check(args)
+
 
 if __name__ == "__main__":
     main()
